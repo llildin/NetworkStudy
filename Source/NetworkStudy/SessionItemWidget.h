@@ -3,8 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "FindSessionsCallbackproxy.h"
 #include "Blueprint/UserWidget.h"
 #include "SessionItemWidget.generated.h"
+
+class UTextBlock;
+class UButton;
 
 /**
  * 
@@ -13,5 +17,29 @@ UCLASS()
 class NETWORKSTUDY_API USessionItemWidget : public UUserWidget
 {
 	GENERATED_BODY()
+	
+public:
+	UFUNCTION(BlueprintCallable)
+	void SetInfo(FBlueprintSessionResult InSessionResult);
+
+	UFUNCTION(BlueprintCallable)
+	void RefreshUI();
+
+protected:
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
+	TObjectPtr<UTextBlock> Txt_SessionName;
+
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
+	TObjectPtr<UTextBlock> Txt_PlayerCount;
+
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
+	TObjectPtr<UTextBlock> Txt_MapName;
+
+	UPROPERTY(BlueprintReadWrite, meta = (BindWidget))
+	TObjectPtr<UButton> Btn_Join;
+
+protected:
+	UPROPERTY(BlueprintReadOnly)
+	FBlueprintSessionResult Result;
 	
 };

@@ -43,10 +43,10 @@ protected:
 
 protected:
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	TSubclassOf<USessionItemWidget> SessionItem;
+	TSubclassOf<USessionItemWidget> SessionItemClass;
 
 	UPROPERTY(BlueprintReadWrite)
-	TArray<TObjectPtr<USessionItemWidget>> Session;
+	TArray<TObjectPtr<USessionItemWidget>> Sessions;
 
 	UPROPERTY(BlueprintReadWrite)
 	TArray<FBlueprintSessionResult> SessionInfos;
